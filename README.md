@@ -1,7 +1,7 @@
 # 🔗 DevLinks44 – Página de Enlaces Personales
 
 <p align="center">
-  <img src="./public/Icono.ico" width="100px">
+  <img src="Logo.png">
 </p>
 
 **DevLinks44** es una página web tipo *Linktree* desarrollada con **Astro**, diseñada para centralizar todos tus enlaces profesionales en un solo lugar.  
