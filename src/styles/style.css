@@ -135,7 +135,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    max-width: 500px;
+    max-width: 350px;
     margin: 20px auto 0;
 }
 
@@ -149,6 +149,7 @@ h1 {
 .social-links a:hover {
     transform: scale(1.2);
 }
+
 
 /* Main Cards Container */
 main {
@@ -325,6 +326,16 @@ main a {
 
 .card:hover p {
     color: #e0e0e0;
+}
+
+.subtítulo {
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 30px;
+    background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* YouTube Section */
