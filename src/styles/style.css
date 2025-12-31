@@ -476,6 +476,10 @@ main a {
     .description {
         font-size: 14px;
     }
+    
+    .social-links {
+        max-width: 300px;
+    }
 
     .social-links a {
         font-size: 20px;
