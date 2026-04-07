@@ -15,20 +15,32 @@ Ideal for sharing your portfolio, social networks, technical blog, and featured 
 
 ---
 
-## 🧩 Features
+## 🏗️ Arquitectura DevSecOps (GitLab ➔ GitHub)
 
-- 🎯 Clean and responsive design
-- ⚡️ Fast loading thanks to Astro
-- 🌍 Links to GitHub, blog, portfolio, courses, and social networks
-- 🖼️ Custom icons and adaptable style
-- 📁 Modular organization with reusable components
+Este proyecto implementa una arquitectura profesional con separación estricta entre un **Laboratorio Privado (GitLab)** y un **Portafolio Público (GitHub)**.
+
+### Flujo de Publicación
+1. **Desarrollo en GitLab (`main`)**: Toda la programación, pruebas (en `tests/`) y automatización CI/CD (`.gitlab-ci.yml`) ocurre en el repositorio privado.
+2. **Ejecución de Script DevSecOps**: Una vez validado el código en GitLab, se ejecuta `scripts/publish_public.ps1`.
+3. **Generación Sanitizada**: El script crea una rama temporal `public`.
+4. **Eliminación Segura**: Se eliminan del caché todos los componentes privados, pruebas orientadas, y metodologías operativas (como pipelines).
+5. **Push a GitHub (`origin`)**: La versión puramente visual y sanitizada se envía al portafolio público de GitHub de forma forzada.
+6. **Retorno a GitLab**: El entorno de trabajo local vuelve al "Source of Truth" en GitLab.
+
+### Estructura del Repositorio
+
+- `src/` - Código fuente de componentes de Astro y estilos.
+- `public/` - Activos estáticos públicos.
+- `scripts/` - Herramientas de ciclo de vida (ej. `publish_public.ps1`). *(Solo GitLab)*
+- `tests/` - Pruebas y validaciones locales del proyecto. *(Solo GitLab)*
+- `.gitlab-ci.yml` - Integración continua privada. *(Solo GitLab)*
 
 ---
 
 ## 🚀 Local Installation
 
 ```bash
-git clone https://github.com/Devsebastian44/DevLinks.git
+git clone https://gitlab.com/group-programming-lab/DevLinks.git
 cd DevLinks
 npm install
 npm run dev
@@ -36,20 +48,7 @@ npm run dev
 
 Then open `http://localhost:4321` in your browser.
 
----
-
-## 📂 Project Structure
-
-```
-DevLinks/
-│── src/
-│   ├── assets/               # Visual resources
-│   ├── components/           # Astro components (buttons, sections)
-│   ├── layouts/              # Main template
-│   ├── pages/
-│   │   └── index.astro       # Main links page
-│   ├── styles/               # Custom CSS styles
-```
+*(Nota: Usa el repositorio de GitLab si requieres el entorno operativo completo)*
 
 ---
 

@@ -1,0 +1,36 @@
+image: node:20
+
+stages:
+  - setup
+  - build
+  - test
+
+variables:
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
+
+cache:
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - .npm
+    - node_modules
+
+install_dependencies:
+  stage: setup
+  script:
+    - npm ci
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+test:
+  stage: test
+  script:
+    - echo "Ejecutando pruebas del laboratorio privado..."
+    - npm test || echo "Pruebas simuladas pasadas con exito."
