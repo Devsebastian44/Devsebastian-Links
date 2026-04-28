@@ -58,9 +58,6 @@ de terceros adicionales en producción.
   limpia y reproducible del entorno local.
 - **Configuración de editor estandarizada** con `.editorconfig` para mantener
   consistencia entre distintos editores y sistemas operativos.
-- **Arquitectura DevSecOps dual** — desarrollo completo en GitLab (fuente de
-  verdad) con publicación sanitizada automatizada hacia GitHub vía
-  `publish_public.ps1`.
 - **Despliegue en Netlify** con generación y distribución del sitio estático
   directamente desde el repositorio, con CDN global y HTTPS automático.
 
@@ -76,7 +73,6 @@ de terceros adicionales en producción.
 | Formateo | Prettier + `prettier-plugin-astro` | `printWidth: 100`, `singleQuote`, `semi` |
 | Despliegue | Netlify | Hosting estático con CDN global |
 | Node versioning | `.nvmrc` | Versión de Node fijada para el entorno |
-| Publicación | PowerShell (`publish_public.ps1`) | Sanitización y push a GitHub |
 | Licencia | MIT | Libre uso personal y educativo |
 
 ---
@@ -91,12 +87,7 @@ de terceros adicionales en producción.
 ### 1. Clonar el repositorio
 
 ```bash
-# Repositorio completo de laboratorio (fuente de verdad, GitLab)
-git clone https://gitlab.com/group-programming-lab/DevLinks.git
-
-# Portafolio público sanitizado (GitHub)
 git clone https://github.com/devsebastian44/DevLinks.git
-
 cd DevLinks
 ```
 
@@ -159,13 +150,6 @@ npx prettier --check .
 npx prettier --write .
 ```
 
-### Publicar a GitHub (DevSecOps)
-
-```powershell
-# Desde PowerShell, en el entorno de laboratorio GitLab
-.\scripts\publish_public.ps1
-```
-
 ---
 
 ## 📁 Project Structure
@@ -204,10 +188,6 @@ DevLinks/
 └── README.md                   # Documentación principal
 ```
 
-> **Nota:** Las carpetas `scripts/`, `tests/` y el archivo `.gitlab-ci.yml`
-> existen únicamente en el repositorio privado de GitLab y son eliminadas
-> automáticamente por `publish_public.ps1` antes de cada publicación en GitHub.
-
 ---
 
 ## 🎨 Personalización
@@ -231,12 +211,14 @@ const profile = {
 **Agregar o modificar enlaces:**
 
 ```astro
+---
 const links = [
   { label: 'GitHub',    url: 'https://github.com/tuusuario',    icon: 'github'   },
   { label: 'LinkedIn',  url: 'https://linkedin.com/in/tuperfil', icon: 'linkedin' },
   { label: 'Portfolio', url: 'https://tuweb.com',               icon: 'globe'    },
   { label: 'Blog',      url: 'https://tublog.com',              icon: 'rss'      },
 ];
+---
 ```
 
 **Paleta de colores** — edita las variables CSS en `src/styles/global.css`:
@@ -275,28 +257,6 @@ diffs innecesarios por diferencias de entorno.
 
 ---
 
-## 🌐 Repository Architecture
-
-Este proyecto sigue una arquitectura distribuida de doble repositorio,
-separando el entorno de desarrollo completo del portafolio público:
-
-**GitHub** expone el código fuente del sitio estático, la configuración del
-proyecto y la documentación como portafolio público limpio y compartible.
-
-**GitLab** es la fuente de verdad y laboratorio de desarrollo: contiene los
-scripts de automatización DevSecOps (`scripts/`), los tests de validación
-(`tests/`), el pipeline de CI/CD (`.gitlab-ci.yml`) y toda la infraestructura
-interna que no forma parte del portafolio público. El flujo de publicación
-es orquestado por `scripts/publish_public.ps1`, que sanitiza el repositorio
-y fuerza el push hacia GitHub de forma controlada y auditable.
-
-### 🔗 Full Source Code
-
-👉 Código completo disponible en GitLab:
-[https://gitlab.com/group-programming-lab/DevLinks](https://gitlab.com/group-programming-lab/DevLinks)
-
----
-
 ## 🚀 Roadmap
 
 Mejoras sugeridas a partir de la arquitectura y stack detectados en el código:
@@ -317,8 +277,7 @@ Mejoras sugeridas a partir de la arquitectura y stack detectados en el código:
   dinámica para mejorar el preview al compartir la URL en redes sociales.
 - **Sitemap.xml automático** con `@astrojs/sitemap` para indexación en
   buscadores.
-- **Tests de accesibilidad** con `axe-core` integrado en el pipeline de
-  GitLab CI/CD para garantizar cumplimiento de estándares WCAG.
+- **Tests de accesibilidad** con `axe-core` para garantizar cumplimiento de estándares WCAG.
 - **Modo multi-perfil** con rutas dinámicas Astro (`/[usuario].astro`)
   que permitan gestionar múltiples páginas de enlaces desde un único
   repositorio usando archivos de datos JSON o YAML por perfil.
@@ -348,10 +307,6 @@ Copyright © 2025 **Sebastián Zhunaula** (devsebastian44)
         <img src="https://img.shields.io/badge/GitHub-devsebastian44-black?style=flat&logo=github" />
       </a>
       <br/>
-      <a href="https://gitlab.com/group-programming-lab">
-        <img src="https://img.shields.io/badge/GitLab-group--programming--lab-FC6D26?style=flat&logo=gitlab" />
-      </a>
-      <br/>
       <a href="https://devlinks44.netlify.app">
         <img src="https://img.shields.io/badge/DevLinks-devlinks44.netlify.app-00C7B7?style=flat&logo=netlify" />
       </a>
@@ -362,5 +317,4 @@ Copyright © 2025 **Sebastián Zhunaula** (devsebastian44)
 > Este proyecto forma parte de un portafolio de desarrollo web frontend,
 > demostrando el uso de Astro como generador de sitios estáticos con
 > TypeScript strict, CSS artesanal, formateo profesional con Prettier y
-> despliegue continuo en Netlify, todo bajo una estrategia DevSecOps de
-> doble repositorio.
+> despliegue continuo en Netlify.
