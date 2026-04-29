@@ -3,11 +3,9 @@
 ![Astro](https://img.shields.io/badge/Astro-SSG-BC52EE?style=flat&logo=astro&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat&logo=typescript&logoColor=white)
 ![CSS](https://img.shields.io/badge/Estilos-CSS%20Custom-1572B6?style=flat&logo=css3&logoColor=white)
-![Netlify](https://img.shields.io/badge/Deploy-Netlify-00C7B7?style=flat&logo=netlify&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Formatter-Prettier-F7B93E?style=flat&logo=prettier&logoColor=black)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=flat&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat&logo=opensourceinitiative&logoColor=white)
-![CI](https://github.com/devsebastian44/DevLinks/actions/workflows/ci.yml/badge.svg)
 
 > 🌐 **Live:** [devlinks44.netlify.app](https://devlinks44.netlify.app)
 
